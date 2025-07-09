@@ -12,7 +12,7 @@ const CrushQuestionnaire = () => {
     "How old are you?",
     "How do you stay motivated to study when you're feeling unmotivated or stressed?",
     "How do you balance your academic life with personal or social life?",
-    "Cute si Kurt no? 😊"
+    "Pogi si Kurt no? 😊"
   ];
 
   const handleInputChange = (e) => {
