@@ -1,0 +1,406 @@
+/* Cyberpunk Theme - Blue Electronics with Green Accents */
+:root {
+  --neon-blue: #0ff0fc;
+  --neon-green: #00ff41;
+  --dark-bg: #0a0a1a;
+  --darker-bg: #050510;
+  --cyber-pink: #ff2a6d;
+  --cyber-purple: #d300c5;
+}
+
+/* General Styles - Cyberpunk Edition */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Rajdhani', 'Courier New', monospace;
+  background-color: var(--dark-bg);
+  overflow-x: hidden;
+  height: 100vh;
+  color: white;
+}
+
+.app {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: radial-gradient(circle at center, var(--darker-bg) 0%, #000 100%);
+}
+
+/* Cyber Glow Effect */
+@keyframes cyber-glow {
+  0%, 100% { text-shadow: 0 0 5px var(--neon-blue), 0 0 10px var(--neon-blue); }
+  50% { text-shadow: 0 0 10px var(--neon-blue), 0 0 20px var(--neon-blue), 0 0 30px var(--neon-green); }
+}
+
+/* Questionnaire Styles - Cyberpunk */
+.questionnaire-container {
+  position: relative;
+  width: 100%;
+  max-width: 600px;
+  padding: 2rem;
+  background-color: rgba(10, 10, 26, 0.8);
+  border-radius: 5px;
+  box-shadow: 0 0 20px var(--neon-blue), 
+              0 0 40px rgba(0, 255, 65, 0.3),
+              inset 0 0 10px var(--neon-blue);
+  z-index: 1;
+  overflow: hidden;
+  border: 1px solid var(--neon-blue);
+}
+
+/* Cyber Circuit Border */
+.questionnaire-container::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border: 1px solid transparent;
+  border-image: linear-gradient(45deg, var(--neon-blue), var(--neon-green)) 1;
+  animation: border-flicker 2s linear infinite;
+  pointer-events: none;
+}
+
+@keyframes border-flicker {
+  0%, 100% { opacity: 0.8; }
+  50% { opacity: 0.2; }
+}
+
+.progress-bar {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 2rem;
+  position: relative;
+}
+
+.progress-bar::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background-color: rgba(0, 255, 65, 0.2);
+  transform: translateY(-50%);
+  z-index: -1;
+}
+
+.progress-step {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background-color: rgba(0, 255, 65, 0.2);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: rgba(255, 255, 255, 0.5);
+  font-weight: bold;
+  position: relative;
+  border: 1px solid var(--neon-green);
+}
+
+.progress-step.active {
+  background-color: var(--neon-blue);
+  color: black;
+  transform: scale(1.2);
+  box-shadow: 0 0 10px var(--neon-blue);
+  border: 1px solid white;
+  animation: cyber-glow 1.5s infinite;
+}
+
+.progress-step.completed {
+  background-color: var(--neon-green);
+  color: black;
+  box-shadow: 0 0 10px var(--neon-green);
+}
+
+.question-card {
+  text-align: center;
+}
+
+.question-card h2 {
+  color: var(--neon-blue);
+  margin-bottom: 2rem;
+  font-size: 1.8rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  animation: cyber-glow 2s infinite;
+}
+
+.question-card input {
+  width: 80%;
+  padding: 1rem;
+  background-color: rgba(0, 0, 0, 0.5);
+  border: 1px solid var(--neon-blue);
+  border-radius: 0;
+  font-size: 1rem;
+  margin-bottom: 2rem;
+  outline: none;
+  transition: all 0.3s;
+  color: var(--neon-green);
+  font-family: 'Courier New', monospace;
+}
+
+.question-card input:focus {
+  border-color: var(--neon-green);
+  box-shadow: 0 0 15px var(--neon-blue);
+  background-color: rgba(0, 0, 0, 0.7);
+}
+
+.button-group {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+}
+
+.yes-button, .no-button {
+  padding: 1rem 2rem;
+  border: none;
+  border-radius: 0;
+  font-size: 1.2rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  position: relative;
+  overflow: hidden;
+}
+
+.yes-button {
+  background-color: var(--neon-green);
+  color: black;
+}
+
+.yes-button:hover {
+  background-color: black;
+  color: var(--neon-green);
+  transform: scale(1.05);
+  box-shadow: 0 0 20px var(--neon-green);
+  border: 1px solid var(--neon-green);
+}
+
+.no-button {
+  background-color: var(--cyber-pink);
+  color: white;
+}
+
+.no-button:hover {
+  background-color: black;
+  color: var(--cyber-pink);
+  box-shadow: 0 0 20px var(--cyber-pink);
+  border: 1px solid var(--cyber-pink);
+}
+
+.navigation-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.nav-button {
+  padding: 0.8rem 1.5rem;
+  border: none;
+  border-radius: 0;
+  background-color: var(--neon-blue);
+  color: black;
+  cursor: pointer;
+  transition: all 0.3s;
+  text-transform: uppercase;
+  font-weight: bold;
+  letter-spacing: 1px;
+}
+
+.nav-button:hover {
+  background-color: black;
+  color: var(--neon-blue);
+  box-shadow: 0 0 15px var(--neon-blue);
+  border: 1px solid var(--neon-blue);
+}
+
+.nav-button:disabled {
+  background-color: #333;
+  color: #666;
+  cursor: not-allowed;
+  box-shadow: none;
+  border: 1px solid #333;
+}
+
+/* Cyberpunk Hearts Animation */
+.hearts, .floating-hearts {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.heart, .floating-heart {
+  position: absolute;
+  animation: float 10s infinite linear;
+  filter: drop-shadow(0 0 5px var(--neon-blue)) drop-shadow(0 0 10px var(--neon-green));
+}
+
+@keyframes float {
+  0% {
+    transform: translateY(0) rotate(0deg);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-100vh) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+/* Confession Page Styles - Cyberpunk */
+.confession-container {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: radial-gradient(circle at center, var(--darker-bg) 0%, #000 100%);
+  overflow: hidden;
+}
+
+.confession-content {
+  text-align: center;
+  z-index: 1;
+  padding: 2rem;
+  background-color: rgba(10, 10, 26, 0.9);
+  border-radius: 5px;
+  box-shadow: 0 0 30px var(--neon-blue), 
+              inset 0 0 10px var(--neon-green);
+  max-width: 800px;
+  border: 1px solid var(--neon-blue);
+}
+
+.confession-content h1 {
+  color: var(--neon-blue);
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  animation: cyber-glow 2s infinite;
+}
+
+.confession-content p {
+  color: var(--neon-green);
+  font-size: 1.2rem;
+  margin-bottom: 2rem;
+  line-height: 1.6;
+}
+
+.video-wrapper {
+  position: relative;
+  padding-bottom: 56.25%;
+  height: 0;
+  margin: 2rem 0;
+  border-radius: 0;
+  overflow: hidden;
+  border: 1px solid var(--neon-blue);
+  box-shadow: 0 0 20px rgba(0, 255, 65, 0.3);
+}
+
+.video-wrapper iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+.facebook-button {
+  display: inline-block;
+  padding: 1rem 2rem;
+  background-color: var(--cyber-purple);
+  color: white;
+  text-decoration: none;
+  border-radius: 0;
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin: 1rem 0;
+  transition: all 0.3s;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  border: 1px solid var(--cyber-purple);
+}
+
+.facebook-button:hover {
+  background-color: black;
+  color: var(--cyber-purple);
+  transform: scale(1.05);
+  box-shadow: 0 0 20px var(--cyber-purple);
+  border: 1px solid var(--cyber-purple);
+}
+
+.back-button {
+  display: block;
+  margin: 2rem auto 0;
+  padding: 0.8rem 1.5rem;
+  background-color: var(--neon-blue);
+  color: black;
+  border: none;
+  border-radius: 0;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s;
+  text-transform: uppercase;
+  font-weight: bold;
+}
+
+.back-button:hover {
+  background-color: black;
+  color: var(--neon-blue);
+  box-shadow: 0 0 15px var(--neon-blue);
+  border: 1px solid var(--neon-blue);
+}
+
+/* Cyberpunk Grid Overlay */
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: 
+    linear-gradient(rgba(0, 255, 65, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 255, 65, 0.05) 1px, transparent 1px);
+  background-size: 20px 20px;
+  pointer-events: none;
+  z-index: -1;
+}
+
+/* Cyberpunk Scanline Effect */
+body::after {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    to bottom,
+    transparent 95%,
+    rgba(0, 255, 65, 0.1) 96%,
+    transparent 97%
+  );
+  background-size: 100% 5px;
+  animation: scanline 5s linear infinite;
+  pointer-events: none;
+  z-index: -1;
+}
+
+@keyframes scanline {
+  0% { background-position: 0 0; }
+  100% { background-position: 0 100vh; }
+}
